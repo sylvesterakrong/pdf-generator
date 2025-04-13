@@ -1,0 +1,228 @@
+p.title {
+    font-size: 30pt;
+}
+
+p#selected-files {
+    display: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+label {
+    display: inline-block;
+    font-size: 25pt;
+    cursor: pointer;
+    padding: 5px 45px;
+    border-radius: 25px;
+    color: white;
+    background-color: #ff9955; 
+}
+
+label :hover {
+    background-color: #ff6600;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="submit"] {
+   display: none;
+   font-size: 16pt;
+   cursor: pointer;
+    padding: 5px 25px;
+    border-radius: 25px;
+    color: white;
+    background-color: black;
+}
+
+@media screen and (max-width: 400px) {
+    p.title {
+        font-size: 25pt;
+    }
+    label {
+        font-size: 20pt;
+    }
+    input[type="submit"] {
+        font-size: 12pt;
+    }
+    
+}
+
+@media screen and (max-width: 320px) {
+    p.title {
+        font-size: 22pt;
+    }
+    label {
+        font-size: 20pt;
+    }
+    input[type="submit"] {
+        font-size: 10pt;
+    }
+    
+}
+
+@media screen and (max-width: 260px) {
+    p.title {
+        font-size: 20pt;
+    }
+    label {
+        padding: 5px 35px;        /* PDF Generator UI Styles */
+        
+        .app-header {
+          text-align: center;
+          margin-bottom: var(--spacing-xl);
+        }
+        
+        p.title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--primary-color);
+          margin-bottom: var(--spacing-md);
+        }
+        
+        /* File Selection */
+        .file-selector {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--spacing-md);
+          margin-bottom: var(--spacing-xl);
+        }
+        
+        p#selected-files {
+          width: 90%;
+          max-width: 500px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding: var(--spacing-sm);
+          margin: var(--spacing-md) 0;
+          background-color: rgba(52, 152, 219, 0.1);
+          border: 1px solid var(--border-color);
+          border-radius: 6px;
+          transition: all 0.3s ease;
+        }
+        
+        p#selected-files.has-files {
+          display: block;
+        }
+        
+        /* File Selection Button */
+        label.file-select-btn {
+          display: inline-block;
+          font-size: 1.25rem;
+          cursor: pointer;
+          padding: 12px 45px;
+          border-radius: 25px;
+          color: white;
+          background-color: var(--accent-color);
+          box-shadow: 0 4px 6px rgba(255, 153, 85, 0.2);
+          transition: all 0.3s ease;
+          text-align: center;
+        }
+        
+        label.file-select-btn:hover {
+          background-color: var(--accent-hover);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 8px rgba(255, 153, 85, 0.3);
+        }
+        
+        label.file-select-btn:active {
+          transform: translateY(0);
+        }
+        
+        input[type="file"] {
+          display: none;
+        }
+        
+        /* Submit Button */
+        input[type="submit"] {
+          font-size: 1.1rem;
+          padding: 10px 30px;
+          background-color: var(--primary-color);
+          box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+          transition: all 0.3s ease;
+        }
+        
+        input[type="submit"].visible {
+          display: inline-block;
+        }
+        
+        input[type="submit"]:hover {
+          background-color: var(--primary-dark);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Progress Indicator */
+        .progress-container {
+          width: 80%;
+          max-width: 400px;
+          margin: var(--spacing-md) auto;
+          display: none;
+        }
+        
+        .progress-bar {
+          height: 8px;
+          background-color: var(--border-color);
+          border-radius: 4px;
+          overflow: hidden;
+        }
+        
+        .progress-fill {
+          height: 100%;
+          background-color: var(--success-color);
+          width: 0%;
+          transition: width 0.3s ease;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+          p.title {
+            font-size: 2rem;
+          }
+          
+          label.file-select-btn {
+            font-size: 1.1rem;
+            padding: 10px 35px;
+          }
+          
+          input[type="submit"] {
+            font-size: 1rem;
+          }
+        }
+        
+        @media screen and (max-width: 400px) {
+          p.title {
+            font-size: 1.75rem;
+          }
+          
+          label.file-select-btn {
+            font-size: 1rem;
+            padding: 8px 30px;
+          }
+          
+          input[type="submit"] {
+            font-size: 0.9rem;
+            padding: 8px 25px;
+          }
+        }
+        
+        @media screen and (max-width: 320px) {
+          p.title {
+            font-size: 1.5rem;
+          }
+          
+          label.file-select-btn {
+            font-size: 0.9rem;
+            padding: 8px 25px;
+          }
+        }
+    }
+    input[type="submit"] {
+        font-size: 8pt;
+    }
+    
+}
