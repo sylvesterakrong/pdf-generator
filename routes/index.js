@@ -31,18 +31,18 @@ const upload = multer({ storage, fileFilter: fileFilter });
 
 router.post('/upload', upload.array('images'), (req, res) => {
   console.log('Files received:', req.files);
-  const files = req.files;
-  const imgNames = [];
+  const files = req.files; 
+  const imgNames = []; 
 
   // Loop through the files and get the names
   for(const file of files){
-    imgNames.push(file.filename);
+    imgNames.push(file.filename);  
   }
 
   // store the names in the session
-  req.session.imagefiles = imgNames;
+  req.session.imagefiles = imgNames; 
 
-  // send the names back to the client
+  // send the names back to the client 
   res.redirect('/'); 
 
 })

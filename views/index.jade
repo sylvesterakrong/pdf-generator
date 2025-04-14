@@ -3,8 +3,29 @@ html
   head 
     title CONVERT2PDF 
     meta(charset='utf-8')
+    link(rel="stylesheet", href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css')
+    link(rel="stylesheet", href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code&display=swap')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/index-view.css')
+    script(type='module', src='/javascripts/sort.js' defer)
   
-  body 
-    h1 Images 
-    each image in images 
-      img (src=`/images/${image}` width='200' height='200')
+  body  
+    header 
+      h1 
+        a(href="/") CONVERT2PDF
+      article 
+        p 
+          a(href="/new") New +  
+        div
+          each image in images 
+            img(src=`/images/${image}`, data-name=image, width='200', height='200')
+        p 
+          a(class='convert')
+            span(class='text') Convert to PDF &rarr;
+            span(class='loader')
+        p
+          a(class='download', download) Download &darr;
+    footer
+      p 
+        code copyright &copy; 2025 
+        a(href="https://github.com/about40kills" target="_blank")i(class="fa-brands fa-github")
