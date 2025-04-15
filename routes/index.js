@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const multer = require('multer');
+const fs = require('fs');
+const PDFDocument = require('pdfkit');
 
 // Set up multer for file uploads
 const storage = multer.diskStorage({
@@ -38,7 +40,7 @@ router.post('/upload', upload.array('images'), (req, res) => {
   for(const file of files){
     imgNames.push(file.filename);  
   }
-
+ 
   // store the names in the session
   req.session.imagefiles = imgNames; 
 
@@ -47,6 +49,30 @@ router.post('/upload', upload.array('images'), (req, res) => {
 
 })
 
+router.post('/pdf', (req, res, next) => {
+  let body = req.body;
+
+  //create a new pdf document
+  let doc = new PDFDocument({sizw: 'A4', autoFirstPage: false});
+  let pdfName = 'pdf-' + Date.now() + '.pdf'; 
+
+
+  //store the pdf in the public/pdf directory
+  doc.pipe(fs.createWriteStream(path.join(__dirname, '..', `public/pdf/${pdfName}`)));
+
+  //add a new page to the pdf  
+  for(let name of body){
+    doc.addPage()
+    doc.image(path.join(__dirname, '..', `/public/images/${name}`), 20, 20,   {width:555.28, align: 'center', valign: 'center'}); 
+  }
+ 
+   // Finalize the PDF
+   doc.end();
+  
+   // Send the PDF URL to the client after the PDF is created
+     res.send(`/pdf/${pdfName}`);
+})
+ 
 /* user sends a GET request to the root URL */
 // and the server responds with the index.html file
 router.get('/', (req, res, next)  => {

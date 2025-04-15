@@ -18,7 +18,7 @@ html
           a(href="/new") New +  
         div
           each image in images 
-            img(src=`/images/${image}`, data-name=image, width='200', height='200')
+            img(src="/images/" + image, data-name=image, width='200', height='200')
         p 
           a(class='convert')
             span(class='text') Convert to PDF &rarr;
@@ -28,4 +28,5 @@ html
     footer
       p 
         code copyright &copy; 2025 
-        a(href="https://github.com/about40kills" target="_blank")i(class="fa-brands fa-github")
+        a(href="https://github.com/about40kills" target="_blank")
+        i(class="fa-brands fa-github") 
