@@ -1,7 +1,11 @@
+ body {
+  background-color: white;
+ }
  article {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    background-color: white;
   }
   
   /* New button styles */
@@ -9,21 +13,28 @@
     margin-bottom: 2rem;
     text-align: right;
   }
-  
-  article p:first-of-type a {
+
+  article  form button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     background-color: #4299e1;
     color: white;
     border-radius: 0.5rem;
     font-weight: 600;
+    border-color: transparent;
     transition: all 0.3s ease;
   }
+  article form button:hover {
+    background-color: #3182ce;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.3);
+  }
+  
   
   article p:first-of-type a:hover {
     background-color: #3182ce;
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.3);
+    box-shadow: 0 4px 6px rgba(182, 214, 239, 0.3);
   }
   
   /* Image grid */
@@ -33,9 +44,9 @@
     gap: 1.5rem;
     margin-bottom: 2rem;
     padding: 2rem;
-    background-color: #2d3748;
+    background-color: #373c44;
     border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(55, 129, 189, 0.2);
   }
   
   article div img {
@@ -51,7 +62,7 @@
   article div img:hover {
     transform: translateY(-4px);
     border-color: #4299e1;
-    box-shadow: 0 6px 12px rgba(66, 153, 225, 0.3);
+    box-shadow: 0 6px 12px rgba(179, 215, 245, 0.3);
   }
   
   /* Convert and Download buttons */
@@ -109,6 +120,18 @@
     display: block;
     animation: spin 1s linear infinite;
   }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding: 1rem 0;
+    z-index: 100;
+  }
+  
   
   @keyframes spin {
     to {

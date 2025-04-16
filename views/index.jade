@@ -8,25 +8,36 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/index-view.css')
     script(type='module', src='/javascripts/sort.js' defer)
+    script(src='/javascripts/convert.js' defer)
   
   body  
     header 
       h1 
-        a(href="/") CONVERT2PDF
-      article 
-        p 
-          a(href="/new") New +  
-        div
-          each image in images 
-            img(src="/images/" + image, data-name=image, width='200', height='200')
-        p 
-          a(class='convert')
-            span(class='text') Convert to PDF &rarr;
-            span(class='loader')
-        p
-          a(class='download', download) Download &darr;
+        a(href="/reset") CONVERT2PDF
+    article 
+      p 
+        form(action="/new", method="post", enctype="multipart/form-data" id="newImagesForm")
+          input(type="file" name="images" id="newImagesInput" accept=".png, .jpg, .jpeg" multiple required style="display: none;")
+          button(type="button" onclick="document.getElementById('newImagesInput').click()") New + 
+
+        script.
+          document.getElementById('newImagesInput').addEventListener('change', function() {
+            if (this.files.length > 0) {
+              document.getElementById('newImagesForm').submit();
+            }
+          }); 
+
+      div.image-container
+        each image in images 
+          img(src="/images/" + image, data-name=image, width='200', height='200')
+      p 
+        a.convert(href="javascript:void(0)")
+          span.text Convert to PDF &rarr;
+          span.loader(style="display: none;") ⏳
+      p
+        a.download(download, style="display: none;") Download PDF &darr;
     footer
       p 
         code copyright &copy; 2025 
-        a(href="https://github.com/about40kills" target="_blank")
-        i(class="fa-brands fa-github") 
+        a(href="https://github.com/about40kills", target="_blank")
+          i.fa-brands.fa-github
