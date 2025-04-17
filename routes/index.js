@@ -49,7 +49,7 @@ const upload = multer({ storage, fileFilter: fileFilter });
 
 
 
-
+//upload seection for the images
 router.post('/upload', upload.array('images'), (req, res) => {
     try {
       console.log('Files received:', req.files);
